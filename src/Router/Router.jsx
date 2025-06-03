@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router";
 import App from "../App";
 import Home from "../Pages/Home/Home";
+import JobDetails from "../Pages/JobDetails/JobDetails";
+import Loader from "../Components/Loader/Loader";
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +13,12 @@ export const router = createBrowserRouter([
         index: true,
         Component: Home,
       },
+      {
+        path:"/details/:id",
+        loader: ({params}) => fetch(`http://localhost:4000/jobs/${params.id}`),
+        Component: JobDetails,
+        HydrateFallback: Loader
+      }
     ],
   },
 ]);
