@@ -3,19 +3,20 @@ import { motion } from "motion/react"
 
 const Banner = () => {
     return (
-        <div className='max-w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center '>
+        <div className='py-5 max-w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center '>
             <div className='flex-1 space-y-5'>
                 <motion.h1
                 className='text-4xl font-bold '
                 initial={{  scale: 0 }}
-                animate={{scale: 1, transition: {duration: 1}}}
+                animate={{scale: 1}}
+                transition={{duration: 3}}
             >
                     FInd your dream <motion.span animate={
                         {color: ['#fce803', '#6ffc03', '#03e8fc', '#9803fc'], transition:{duration: 2, repeat: Infinity}}
                         }>jobs</motion.span> that are few clicks away
                 </motion.h1>
                 <p className='font-semibold text-base'>
-                    We provide diffreent kinds of jobs and employee data. You can browse, apply and get hired from here. Get logged in and unleash the oppotunity.
+                    We provide diffreent kinds of Jobs and employee data. You can browse, apply and get hired from here. Get logged in and unleash the oppotunity.
                 </p>
             </div>
             <div className='flex-1'>
