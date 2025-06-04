@@ -3,6 +3,8 @@ import App from "../App";
 import Home from "../Pages/Home/Home";
 import JobDetails from "../Pages/JobDetails/JobDetails";
 import Loader from "../Components/Loader/Loader";
+import LogIn from "../Pages/LogIn/LogIn";
+import Register from "../Pages/Register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ export const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:4000/jobs/${params.id}`),
         Component: JobDetails,
         HydrateFallback: Loader
+      },
+      {
+        path: "/login",
+        Component: LogIn
+      },
+      {
+        path:"/register",
+        Component: Register
       }
     ],
   },
