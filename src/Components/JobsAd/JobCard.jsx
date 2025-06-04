@@ -15,10 +15,11 @@ const JobCard = ({job}) => {
             <h2 className="text-xl font-bold text-gray-800">
               {title}
             </h2>
+            <h2 className="text-lg font-serif font-bold text-gray-700">{company}</h2>
             <p className="text-sm text-gray-500">
               {category} · {jobType} · {location}
             </p>
-            <h2 className="text-2xl font-bold text-gray-700">{company}</h2>
+            
           </div>
         </div>
 
