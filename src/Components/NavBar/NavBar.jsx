@@ -11,8 +11,8 @@ const NavBar = () => {
   const links = (
     <>
       <NavLink to={"/"}>Home</NavLink>
-      <NavLink>Add Job</NavLink>
-      <NavLink>My jobs</NavLink>
+      <NavLink to={"/addjob"}>Add Job</NavLink>
+      <NavLink to={"/myjobs"}>My jobs</NavLink>
     </>
   );
   return (

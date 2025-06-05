@@ -21,7 +21,7 @@ const JobDetails = () => {
     description,
   } = job;
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white to-blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-white to-blue-100 py-8">
       {/* Title Centered */}
       <div className="flex items-center justify-center py-12">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 text-center">
@@ -30,9 +30,9 @@ const JobDetails = () => {
       </div>
 
       {/* Job Card */}
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10 mb-10">
+      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-6 md:p-10 pb-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-center gap-6 mb-6">
+        <div className="flex flex-col md:flex-row items-center gap-6 pb-6">
           <img
             src={company_logo}
             alt={company}
@@ -50,10 +50,10 @@ const JobDetails = () => {
 
         {/* Description */}
         <h1 className="text-gray-800 font-bold text-lg">Description</h1>
-        <p className="text-gray-700 text-lg mb-6">{description}</p>
+        <p className="text-gray-700 text-lg pb-6">{description}</p>
 
         {/* Salary & Deadline */}
-        <div className="flex flex-col sm:flex-row sm:justify-between text-gray-700 mb-6">
+        <div className="flex flex-col sm:flex-row sm:justify-between text-gray-700 pb-6">
           <p>
             <strong>Salary:</strong> <span className="font-bold capitalize">{salaryRange.currency}</span> {salaryRange.min} – {salaryRange.min}          </p>
           <p>
@@ -62,8 +62,8 @@ const JobDetails = () => {
         </div>
 
         {/* Requirements */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">
+        <div className="pb-6">
+          <h3 className="text-lg font-semibold pb-2 text-gray-800">
             Requirements
           </h3>
           <ul className="flex flex-wrap gap-2">
@@ -79,8 +79,8 @@ const JobDetails = () => {
         </div>
 
         {/* Responsibilities */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-2 text-gray-800">
+        <div className="pb-6">
+          <h3 className="text-lg font-semibold pb-2 text-gray-800">
             Responsibilities
           </h3>
           <ul className="space-y-2 text-gray-700">
