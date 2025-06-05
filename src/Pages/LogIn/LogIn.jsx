@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router";
 
 const LogIn = () => {
-    const {signInwithGoogle} = useContext(AuthContext);
+    const {signInwithGoogle, emailLogIn} = useContext(AuthContext);
     const googleSignIn = () => {
         signInwithGoogle()
         .then(() => {
@@ -13,6 +13,19 @@ const LogIn = () => {
         .catch((err) => {
             toast.error(err.message);
         })
+    }
+
+    const handleLogIn = (e) => {
+      e.preventDefault();
+      const email  = e.target.email.value;
+      const password  = e.target.password.value;
+      emailLogIn(email, password)
+      .then(() => {
+        toast.success("Log In Successful");
+      })
+      .catch((err) => {
+        toast.error(err.message)
+      })
     }
     return (
     <div className="py-5 flex justify-center items-center">
@@ -23,7 +36,7 @@ const LogIn = () => {
             Sign in to access your account
           </p>
         </div>
-        <form noValidate="" action="" className="space-y-12">
+        <form onSubmit={handleLogIn} className="space-y-12">
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">

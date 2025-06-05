@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthCOntext";
 import { toast } from "react-toastify";
 
 const Register = () => {
-    const {registerWithEmail} = useContext(AuthContext);
+    const {registerWithEmail, updateUser} = useContext(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -17,7 +17,13 @@ const Register = () => {
         console.log( name, photoUrl,email, password);
         registerWithEmail(email, password)
         .then(() => {
-            toast.success("Registartion Successful!")
+            updateUser(name, photoUrl)
+            .then(() => {
+                toast.success("Registartion with name and photo Successful!");
+            })
+            .catch((error) => {
+               toast.error(error.message) 
+            })
         })
         .catch((err) => {
             toast.error(err.message)
@@ -43,6 +49,7 @@ const Register = () => {
                 name="name"
                 id="name"
                 placeholder="Enter your name"
+                required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
               <label htmlFor="photoUrl" className="block mb-2 text-sm">
@@ -53,6 +60,7 @@ const Register = () => {
                 name="photoUrl"
                 placeholder="Photo URL"
                 id="photoUrl"
+                required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
               <label htmlFor="email" className="block mb-2 text-sm">
@@ -62,7 +70,8 @@ const Register = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leroy@jenkins.com"
+                required
+                placeholder="Email"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>
@@ -84,6 +93,7 @@ const Register = () => {
                 name="password"
                 id="password"
                 placeholder="*******"
+                required
                 className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800"
               />
             </div>

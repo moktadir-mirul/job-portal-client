@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../../AuthProvider/AuthCOntext";
 
 const NavBar = () => {
-	const links = <>
-	<NavLink to={"/"}>Home</NavLink>
-	<NavLink>Add Job</NavLink>
-	<NavLink>My jobs</NavLink>
-	</>
+  const { user, signOutUser } = useContext(AuthContext);
+  console.log(user);
+  const handleLogOut = () => {
+      signOutUser();
+  }
+  const links = (
+    <>
+      <NavLink to={"/"}>Home</NavLink>
+      <NavLink>Add Job</NavLink>
+      <NavLink>My jobs</NavLink>
+    </>
+  );
   return (
     <div>
       <div className="navbar bg-base-100 shadow-sm">
@@ -33,19 +41,34 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-5"
             >
-				{links}
+              {links}
             </ul>
           </div>
           <a className="btn btn-ghost text-xl">Career Code</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 gap-5">
-            {links}
-          </ul>
+          <ul className="menu menu-horizontal px-1 gap-5">{links}</ul>
         </div>
         <div className="navbar-end gap-2 flex-col md:flex-row">
-          <Link to={"/login"}><button className="btn">Log In</button></Link>
-          <Link to={"/register"}><button className="btn btn-secondary">Register</button></Link>
+          {user ? (
+            <>
+              <img
+                className="w-14 h-14 rounded-full ring-2 ring-blue-500"
+                src={user.photoURL}
+                alt=""
+              />
+              <button onClick={handleLogOut} className="btn btn-info">Log Out</button>
+            </>
+          ) : (
+            <>
+              <Link to={"/login"}>
+                <button className="btn">Log In</button>
+              </Link>
+              <Link to={"/register"}>
+                <button className="btn btn-secondary">Register</button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>
