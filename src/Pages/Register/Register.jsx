@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../AuthProvider/AuthCOntext";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const {registerWithEmail} = useContext(AuthContext);
@@ -14,6 +15,13 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log( name, photoUrl,email, password);
+        registerWithEmail(email, password)
+        .then(() => {
+            toast.success("Registartion Successful!")
+        })
+        .catch((err) => {
+            toast.error(err.message)
+        })
     }
   return (
     <div className="py-5 flex flex-col items-center">
