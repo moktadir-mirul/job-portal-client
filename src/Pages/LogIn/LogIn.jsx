@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthCOntext";
 import { toast } from "react-toastify";
+import { Link } from "react-router";
 
 const LogIn = () => {
     const {signInwithGoogle} = useContext(AuthContext);
@@ -69,13 +70,12 @@ const LogIn = () => {
             </div>
             <p className="px-6 text-sm text-center text-gray-600">
               Don't have an account yet?
-              <a
-                rel="noopener noreferrer"
-                href="#"
+              <Link
+                to={"/register"}
                 className="hover:underline text-sky-600"
               >
-                Sign up
-              </a>
+                Register
+              </Link>
               .
             </p>
           </div>
