@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthCOntext";
 import { toast } from "react-toastify";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const LogIn = () => {
     const {signInwithGoogle, emailLogIn} = useContext(AuthContext);
+    const location = useLocation()
     const navigate = useNavigate();
     const googleSignIn = () => {
         signInwithGoogle()
         .then(() => {
             toast.success("Google log in successful!")
+            navigate(location.state || "/")
         })
         .catch((err) => {
             toast.error(err.message);
@@ -23,7 +25,7 @@ const LogIn = () => {
       emailLogIn(email, password)
       .then(() => {
         toast.success("Log In Successful");
-        navigate("/")
+        navigate(location.state || "/")
       })
       .catch((err) => {
         toast.error(err.message)

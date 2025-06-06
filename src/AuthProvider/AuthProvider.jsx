@@ -27,8 +27,7 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    // Update USer Info
-
+    // Update User Info
     const updateUser = (name, photoUrl) => {
         return updateProfile(auth.currentUser, {displayName: name, photoURL: photoUrl});
     } 
@@ -37,6 +36,7 @@ const AuthProvider = ({children}) => {
     const signOutUser = () => {
         return signOut(auth)
     }
+    
     // User Auth
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
