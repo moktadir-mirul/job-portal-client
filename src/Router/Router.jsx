@@ -52,7 +52,9 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><MyPostedJobs></MyPostedJobs></PrivateRoute>
       },
       {
-        path: "/viewapplication",
+        path: "/applications/:job_id",
+        loader: ({params}) => fetch(`http://localhost:4000/applications/job/${params.job_id}`),
+        HydrateFallback: Loader,
         element: <PrivateRoute><ViewApplication></ViewApplication></PrivateRoute>
       }
     ],

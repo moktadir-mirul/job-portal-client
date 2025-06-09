@@ -14,6 +14,8 @@ const PostedJobsTable = ({ postedJobsPromise }) => {
               <th>#</th>
               <th>Job Name</th>
               <th>Company</th>
+              <th>Deadline</th>
+              <th>No. Of Applications</th>
               <th>Applications</th>
             </tr>
           </thead>
@@ -23,7 +25,9 @@ const PostedJobsTable = ({ postedJobsPromise }) => {
                 <th>{idx + 1}</th>
                 <td>{job.title}</td>
                 <td>{job.company}</td>
-                <td><Link to={"/viewapplication"}>View Applications</Link></td>
+                <td>{job.applicationDeadline}</td>
+                <td>{job.application_count}</td>
+                <td><Link to={`/applications/${job._id}`}>View Applications</Link></td>
               </tr>
             ))}
           </tbody>
