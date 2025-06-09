@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 const ApplyJob = () => {
     const {id : jobId} = useParams();
     const {user} = useContext(AuthContext);
-    console.log(jobId, user)
+
     const handleApplyJob = e => {
         e.preventDefault();
         const form = e.target;

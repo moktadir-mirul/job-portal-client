@@ -1,8 +1,8 @@
 import React, { use } from "react";
 
-const JobList = ({applicantPromise}) => {
-    const applications = use(applicantPromise);
-    console.log(applications);
+const JobList = ({applicantsPromise}) => {
+    const applications = use(applicantsPromise);
+
   return (
     <div>
       <div className="w-11/12 mx-auto py-5">
@@ -12,20 +12,26 @@ const JobList = ({applicantPromise}) => {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th>Company Logo</th>
+                <th>Email</th>
                 <th>Job Details</th>
-                <th>Favorite Color</th>
+                <th>Conatct Address</th>
               </tr>
             </thead>
 
             <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Cy Ganderton</td>
-                <td>Quality Control Specialist</td>
-                <td>Blue</td>
-              </tr>
+              {
+                applications.map((app, index) => <tr key={app._id}>
+                <th>{index + 1}</th>
+                <th><img className="w-16 h-16" src={app.logo} alt={app.company} /></th>
+                <td>{app.email}</td>
+                <td>
+                    <p className="text-xl font-bold">{app.title}</p>
+                    <p className="font-semibold text-base">{app.company}</p>
+                </td>
+                <td>{app.location}</td>
+              </tr>)
+              }
             </tbody>
           </table>
         </div>
