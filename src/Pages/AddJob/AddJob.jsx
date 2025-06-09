@@ -32,7 +32,7 @@ console.log(rest);
         .then(res => res.json())
         .then(data => {
             if(data.insertedId) {
-console.log(data)
+            console.log(data)
             toast.success("Job added")
             }
             

@@ -12,7 +12,11 @@ const NavBar = () => {
     <>
       <NavLink to={"/"}>Home</NavLink>
       <NavLink to={"/addjob"}>Add Job</NavLink>
-      <NavLink to={"/myjobs"}>My jobs</NavLink>
+      {user && <>
+        <NavLink to={"/myjobs"}>My Applied jobs</NavLink>
+        <NavLink to={"/mypostedjobs"}>My Posted jobs</NavLink>
+      </>}
+      
     </>
   );
   return (
